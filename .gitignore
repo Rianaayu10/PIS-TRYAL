@@ -42,5 +42,6 @@ node_modules/
 /AD-PIS-4/SourceCode/WEB/PIS4_PCD/wwwroot/lib/
 /AD-PIS-4/SourceCode/WEB/PIS4_PCD/wwwroot/plugins/
 /AD-PIS-4/SourceCode/WEB/PIS4_PCD/wwwroot/webfonts/
+/AD-PIS-4/SourceCode/WEB/PIS4_PCD/wwwroot/additional_js/
 #Nuget packages folder
 packages/
