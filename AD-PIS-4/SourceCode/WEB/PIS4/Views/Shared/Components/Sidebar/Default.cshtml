@@ -1,0 +1,205 @@
+﻿<!-- ======== Form SideBar ========= -->
+@model IEnumerable<PIS4.Models.GroupMenu>
+@{
+    ViewData["UserLogin"] = @ViewBag.UserLogin;
+    ViewData["UserName"] = @ViewBag.UserName;
+
+
+    ViewData["URLPIS4"] = "http://localhost:8088/";
+    //ViewData["URLPIS4"] = "https://localhost:44370/";
+    ViewData["URLPCD"] = "https://localhost:44370/";
+}
+
+@*@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    var menuController = (ViewContext.RouteData.Values["controller"] != null) ? ViewContext.RouteData.Values["controller"].ToString() : null;
+    var menuAction = (ViewContext.RouteData.Values["action"] != null) ? ViewContext.RouteData.Values["action"].ToString() : null;
+}*@
+
+<div class="menu-profile">
+    <a href="javascript:;" class="menu-profile-link" data-toggle="app-sidebar-profile" data-target="#appSidebarProfileMenu">
+        <div class="menu-profile-cover with-shadow"></div>
+        <div class="menu-profile-image menu-profile-image-icon bg-gray-900 text-gray-600">
+            <i class="fa fa-user"></i>
+        </div>
+        <div class="menu-profile-info">
+            <div class="d-flex align-items-center">
+                <div class="flex-grow-1">
+                    @ViewData["UserLogin"]
+                </div>
+                <div class="menu-caret ms-auto"></div>
+            </div>
+            <small>@ViewData["UserName"]</small>
+        </div>
+    </a>
+</div>
+<div id="appSidebarProfileMenu" class="collapse">
+    <div class="menu-item pt-5px">
+        <a href="javascript:;" class="menu-link">
+            <div class="menu-icon"><i class="fa fa-cog"></i></div>
+            <div class="menu-text">Settings</div>
+        </a>
+    </div>
+    <div class="menu-item">
+        <a href="javascript:;" class="menu-link">
+            <div class="menu-icon"><i class="fa fa-pencil-alt"></i></div>
+            <div class="menu-text"> Send Feedback</div>
+        </a>
+    </div>
+    <div class="menu-item pb-5px">
+        <a href="javascript:;" class="menu-link">
+            <div class="menu-icon"><i class="fa fa-question-circle"></i></div>
+            <div class="menu-text"> Helps</div>
+        </a>
+    </div>
+    <div class="menu-divider m-0"></div>
+</div>
+
+@foreach (var GroupMenu in Model)
+{
+    //Code Fix
+    //var GroupURL = GroupMenu.GroupURL;
+
+    //Code Tryal
+    var GroupURL = "";
+    if (GroupMenu.GroupName == "PCD")
+    {
+        GroupURL = @ViewData["URLPCD"] + "";
+    }
+    else
+    {
+        GroupURL = @ViewData["URLPIS4"] + "";
+    }
+
+
+    @if (Int32.Parse(GroupMenu.SubGroupCount) == 1)
+    {
+        @foreach (var subGroupMenu in GroupMenu.SubGroupMenu)
+        {
+            @if (subGroupMenu.Menu.Count == 1 )
+            {
+                <div class="menu-item @("") @("")">
+                    @foreach (var Menu in subGroupMenu.Menu)
+                    {
+                        var URL = GroupURL + Menu.Controller + "/" + Menu.Action;
+
+                        <a class="menu-link" href="@URL">
+                            <div class="menu-icon"><i class="@GroupMenu.GroupIcon"></i></div>
+                            <div class="menu-text">@GroupMenu.GroupName</div>
+                        </a>
+                    }
+                </div>
+            }         
+
+            @if (subGroupMenu.Menu.Count > 1 && subGroupMenu.SubGroupID == "999")
+            {
+                <div class="menu-item @("") @("has-sub")">
+                    <a href="javascript:;" class="menu-link">
+                        <div class="menu-icon"><i class="@GroupMenu.GroupIcon"></i></div>
+                        <div class="menu-text">@GroupMenu.GroupName</div>
+                        <div class="menu-caret"></div>
+                    </a>
+
+                    <div class="menu-submenu">
+                        @foreach (var Menu in subGroupMenu.Menu)
+                        {
+                            var URL = GroupURL + Menu.Controller + "/" + Menu.Action;
+
+                            <div class="menu-item @("") @("")">
+                                <a class="menu-link" href="@URL">
+                                    <div class="menu-text">@Menu.MenuDesc</div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+
+            @if (subGroupMenu.Menu.Count > 1 && subGroupMenu.SubGroupID != "999")
+            {
+                <div class="menu-item @("") @("has-sub") ">
+                    <a href="javascript:;" class="menu-link">
+                        <div class="menu-icon"><i class="@GroupMenu.GroupIcon"></i></div>
+                        <div class="menu-text">@GroupMenu.GroupName</div>
+                        <div class="menu-caret"></div>
+                    </a>
+
+                    <div class="menu-submenu">
+                        <div class="menu-item @("") @("has-sub")">
+                            <a class="menu-link" href="javascript:;">
+                                <div class="menu-text">@subGroupMenu.SubGroupName</div>
+                                <div class="menu-caret"></div>
+                            </a>
+
+                            <div class="menu-submenu">
+                                @foreach (var Menu in subGroupMenu.Menu)
+                                {
+                                    var URL = GroupURL + Menu.Controller + "/" + Menu.Action;
+
+                                    <div class="menu-item @("") @("")">
+                                        <a class="menu-link" href="@URL">
+                                            <div class="menu-text">@Menu.MenuDesc</div>
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    }
+
+
+    @if (Int32.Parse(GroupMenu.SubGroupCount) > 1)
+    {
+        <div class="menu-item @("") @("has-sub") ">
+            <a href="javascript:;" class="menu-link">
+                <div class="menu-icon"><i class="@GroupMenu.GroupIcon"></i></div>
+                <div class="menu-text">@GroupMenu.GroupName</div>
+                <div class="menu-caret"></div>
+            </a>
+
+            <div class="menu-submenu">
+                @foreach (var subGroupMenu in GroupMenu.SubGroupMenu)
+                {
+                    @if (subGroupMenu.Menu.Count == 1)
+                    {
+                        @foreach (var Menu in subGroupMenu.Menu)
+                        {
+                            var URL = GroupURL + Menu.Controller + "/" + Menu.Action;
+
+                            <a class="menu-link" href="@URL">
+                                <div class="menu-text">@Menu.MenuDesc</div>
+                            </a>
+                        }
+                    }
+                   
+                    @if (subGroupMenu.Menu.Count > 1)
+                    {
+                        <div class="menu-item @("") @("has-sub")">
+                            <a class="menu-link" href="javascript:;">
+                                <div class="menu-text">@subGroupMenu.SubGroupName</div>
+                                <div class="menu-caret"></div>
+                            </a>
+
+                            <div class="menu-submenu">
+                                @foreach (var Menu in subGroupMenu.Menu)
+                                {
+                                    var URL = GroupURL + Menu.Controller + "/" + Menu.Action;
+
+                                    <div class="menu-item @("") @("")">
+                                        <a class="menu-link" href="@URL">
+                                            <div class="menu-text">@Menu.MenuDesc</div>
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    }
+}

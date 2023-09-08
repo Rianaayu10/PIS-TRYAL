@@ -1,0 +1,13 @@
+﻿@section Scripts {
+    <script type="text/javascript">
+        var JwtCookie = '@ViewBag.JwtCookie';
+
+        if (JwtCookie == null || JwtCookie == "") {
+            window.open("http://localhost:8088/UserLogin/UserLogin", "_self");
+        } else {
+            window.open("http://localhost:8088/Home/Index?Token=" + JwtCookie + "", "_self");
+        }
+
+    </script>
+}
+

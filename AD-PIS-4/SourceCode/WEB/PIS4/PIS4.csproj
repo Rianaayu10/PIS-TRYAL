@@ -1,0 +1,354 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <UserSecretsId>aspnet-ColorAdmin-1F5D3C4F-0890-4CC7-9F09-68A81047D315</UserSecretsId>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="node_modules\%40foliojs-fork\fontkit\package.json" />
+    <Content Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\indic.json" />
+    <Content Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\use.json" />
+    <Content Include="node_modules\%40foliojs-fork\linebreak\package.json" />
+    <Content Include="node_modules\%40foliojs-fork\linebreak\test\LineBreakTest.txt" />
+    <Content Include="node_modules\%40foliojs-fork\pdfkit\package.json" />
+    <Content Include="node_modules\%40foliojs-fork\restructure\package.json" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\all.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\all.min.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\brands.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\brands.min.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\fontawesome.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\fontawesome.min.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\regular.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\regular.min.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\solid.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\solid.min.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\svg-with-js.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\svg-with-js.min.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\v4-font-face.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\v4-font-face.min.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\v4-shims.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\v4-shims.min.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\v5-font-face.css" />
+    <Content Include="node_modules\%40fortawesome\fontawesome-free\css\v5-font-face.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.8" />
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.20.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="SharpYaml" Version="2.1.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\ChangePassword\" />
+    <Folder Include="Views\UserGroup\" />
+    <Folder Include="Views\UserSetup\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="node_modules\%40foliojs-fork\fontkit\base.es5.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\base.es5.js.map" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\base.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\base.js.map" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\data.trie" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\index.es5.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\index.es5.js.map" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\index.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\index.js.map" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\indic.trie" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\README.md" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\aat\AATFeatureMap.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\aat\AATLayoutEngine.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\aat\AATLookupTable.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\aat\AATMorxProcessor.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\aat\AATStateMachine.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\base.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\cff\CFFCharsets.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\cff\CFFDict.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\cff\CFFEncodings.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\cff\CFFFont.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\cff\CFFIndex.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\cff\CFFOperand.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\cff\CFFPointer.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\cff\CFFPrivateDict.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\cff\CFFStandardStrings.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\cff\CFFTop.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\CmapProcessor.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\decorators.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\DFont.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\encodings.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\glyph\BBox.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\glyph\CFFGlyph.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\glyph\COLRGlyph.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\glyph\Glyph.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\glyph\GlyphVariationProcessor.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\glyph\Path.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\glyph\SBIXGlyph.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\glyph\StandardNames.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\glyph\TTFGlyph.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\glyph\TTFGlyphEncoder.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\glyph\WOFF2Glyph.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\index.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\layout\GlyphPosition.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\layout\GlyphRun.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\layout\KernProcessor.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\layout\LayoutEngine.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\layout\Script.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\layout\UnicodeLayoutEngine.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\GlyphInfo.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\GlyphIterator.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\GPOSProcessor.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\GSUBProcessor.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\OTLayoutEngine.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\OTProcessor.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\ArabicShaper.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\data.trie" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\DefaultShaper.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\gen-indic.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\gen-use.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\generate-data.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\HangulShaper.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\index.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\indic-data.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\indic.machine" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\indic.trie" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\IndicShaper.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\UniversalShaper.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\use.machine" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\shapers\use.trie" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\opentype\ShapingPlan.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\subset\CFFSubset.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\subset\Subset.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\subset\TTFSubset.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\aat.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\avar.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\BASE.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\bsln.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\cmap.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\COLR.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\CPAL.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\cvt.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\directory.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\DSIG.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\EBDT.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\EBLC.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\feat.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\fpgm.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\fvar.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\gasp.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\GDEF.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\glyf.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\GPOS.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\GSUB.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\gvar.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\hdmx.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\head.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\hhea.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\hmtx.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\HVAR.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\index.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\JSTF.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\just.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\kern.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\loca.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\LTSH.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\maxp.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\morx.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\name.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\opbd.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\opentype.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\OS2.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\PCLT.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\post.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\prep.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\sbix.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\variations.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\VDMX.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\vhea.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\vmtx.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\VORG.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\WOFF2Directory.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\tables\WOFFDirectory.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\TrueTypeCollection.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\TTFFont.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\utils.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\WOFF2Font.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\src\WOFFFont.js" />
+    <None Include="node_modules\%40foliojs-fork\fontkit\use.trie" />
+    <None Include="node_modules\%40foliojs-fork\linebreak\LICENSE" />
+    <None Include="node_modules\%40foliojs-fork\linebreak\readme.md" />
+    <None Include="node_modules\%40foliojs-fork\linebreak\src\classes.js" />
+    <None Include="node_modules\%40foliojs-fork\linebreak\src\classes.trie" />
+    <None Include="node_modules\%40foliojs-fork\linebreak\src\generate_data.js" />
+    <None Include="node_modules\%40foliojs-fork\linebreak\src\linebreaker.js" />
+    <None Include="node_modules\%40foliojs-fork\linebreak\src\pairs.js" />
+    <None Include="node_modules\%40foliojs-fork\linebreak\test\index.js" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\CHANGELOG.md" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\Courier-Bold.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\Courier-BoldOblique.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\Courier-Oblique.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\Courier.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\Helvetica-Bold.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\Helvetica-BoldOblique.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\Helvetica-Oblique.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\Helvetica.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\Symbol.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\Times-Bold.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\Times-BoldItalic.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\Times-Italic.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\Times-Roman.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\data\ZapfDingbats.afm" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\pdfkit.es5.js" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\pdfkit.es5.js.map" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\pdfkit.esnext.js" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\pdfkit.esnext.js.map" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\pdfkit.js" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\pdfkit.js.map" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\js\virtual-fs.js" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\LICENSE" />
+    <None Include="node_modules\%40foliojs-fork\pdfkit\README.md" />
+    <None Include="node_modules\%40foliojs-fork\restructure\index.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\LICENSE" />
+    <None Include="node_modules\%40foliojs-fork\restructure\README.md" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\Array.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\Bitfield.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\Boolean.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\Buffer.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\DecodeStream.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\EncodeStream.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\Enum.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\LazyArray.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\Number.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\Optional.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\Pointer.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\Reserved.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\String.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\Struct.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\utils.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\src\VersionedStruct.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\Array.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\Bitfield.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\Boolean.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\Buffer.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\DecodeStream.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\EncodeStream.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\Enum.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\LazyArray.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\Number.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\Optional.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\Pointer.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\Reserved.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\String.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\Struct.js" />
+    <None Include="node_modules\%40foliojs-fork\restructure\test\VersionedStruct.js" />
+    <None Include="node_modules\.bin\acorn" />
+    <None Include="node_modules\.bin\acorn.cmd" />
+    <None Include="node_modules\.bin\acorn.ps1" />
+    <None Include="node_modules\.bin\atob" />
+    <None Include="node_modules\.bin\atob.cmd" />
+    <None Include="node_modules\.bin\atob.ps1" />
+    <None Include="node_modules\.bin\autoprefixer" />
+    <None Include="node_modules\.bin\autoprefixer.cmd" />
+    <None Include="node_modules\.bin\autoprefixer.ps1" />
+    <None Include="node_modules\.bin\brfs" />
+    <None Include="node_modules\.bin\brfs.cmd" />
+    <None Include="node_modules\.bin\brfs.ps1" />
+    <None Include="node_modules\.bin\browserslist" />
+    <None Include="node_modules\.bin\browserslist.cmd" />
+    <None Include="node_modules\.bin\browserslist.ps1" />
+    <None Include="node_modules\.bin\color-support" />
+    <None Include="node_modules\.bin\color-support.cmd" />
+    <None Include="node_modules\.bin\color-support.ps1" />
+    <None Include="node_modules\.bin\errno" />
+    <None Include="node_modules\.bin\errno.cmd" />
+    <None Include="node_modules\.bin\errno.ps1" />
+    <None Include="node_modules\.bin\escodegen" />
+    <None Include="node_modules\.bin\escodegen.cmd" />
+    <None Include="node_modules\.bin\escodegen.ps1" />
+    <None Include="node_modules\.bin\esgenerate" />
+    <None Include="node_modules\.bin\esgenerate.cmd" />
+    <None Include="node_modules\.bin\esgenerate.ps1" />
+    <None Include="node_modules\.bin\esparse" />
+    <None Include="node_modules\.bin\esparse.cmd" />
+    <None Include="node_modules\.bin\esparse.ps1" />
+    <None Include="node_modules\.bin\esvalidate" />
+    <None Include="node_modules\.bin\esvalidate.cmd" />
+    <None Include="node_modules\.bin\esvalidate.ps1" />
+    <None Include="node_modules\.bin\gulp" />
+    <None Include="node_modules\.bin\gulp.cmd" />
+    <None Include="node_modules\.bin\gulp.ps1" />
+    <None Include="node_modules\.bin\image-size" />
+    <None Include="node_modules\.bin\image-size.cmd" />
+    <None Include="node_modules\.bin\image-size.ps1" />
+    <None Include="node_modules\.bin\json5" />
+    <None Include="node_modules\.bin\json5.cmd" />
+    <None Include="node_modules\.bin\json5.ps1" />
+    <None Include="node_modules\.bin\lessc" />
+    <None Include="node_modules\.bin\lessc.cmd" />
+    <None Include="node_modules\.bin\lessc.ps1" />
+    <None Include="node_modules\.bin\mime" />
+    <None Include="node_modules\.bin\mime.cmd" />
+    <None Include="node_modules\.bin\mime.ps1" />
+    <None Include="node_modules\.bin\nanoid" />
+    <None Include="node_modules\.bin\nanoid.cmd" />
+    <None Include="node_modules\.bin\nanoid.ps1" />
+    <None Include="node_modules\.bin\needle" />
+    <None Include="node_modules\.bin\needle.cmd" />
+    <None Include="node_modules\.bin\needle.ps1" />
+    <None Include="node_modules\.bin\quote-stream" />
+    <None Include="node_modules\.bin\quote-stream.cmd" />
+    <None Include="node_modules\.bin\quote-stream.ps1" />
+    <None Include="node_modules\.bin\resolve" />
+    <None Include="node_modules\.bin\resolve.cmd" />
+    <None Include="node_modules\.bin\resolve.ps1" />
+    <None Include="node_modules\.bin\sass" />
+    <None Include="node_modules\.bin\sass.cmd" />
+    <None Include="node_modules\.bin\sass.ps1" />
+    <None Include="node_modules\.bin\semver" />
+    <None Include="node_modules\.bin\semver.cmd" />
+    <None Include="node_modules\.bin\semver.ps1" />
+    <None Include="node_modules\.bin\stencil" />
+    <None Include="node_modules\.bin\stencil.cmd" />
+    <None Include="node_modules\.bin\stencil.ps1" />
+    <None Include="node_modules\.bin\terser" />
+    <None Include="node_modules\.bin\terser.cmd" />
+    <None Include="node_modules\.bin\terser.ps1" />
+    <None Include="node_modules\.bin\tmpl.js" />
+    <None Include="node_modules\.bin\tmpl.js.cmd" />
+    <None Include="node_modules\.bin\tmpl.js.ps1" />
+    <None Include="node_modules\.bin\uglifyjs" />
+    <None Include="node_modules\.bin\uglifyjs.cmd" />
+    <None Include="node_modules\.bin\uglifyjs.ps1" />
+    <None Include="node_modules\.bin\update-browserslist-db" />
+    <None Include="node_modules\.bin\update-browserslist-db.cmd" />
+    <None Include="node_modules\.bin\update-browserslist-db.ps1" />
+    <None Include="node_modules\.bin\which" />
+    <None Include="node_modules\.bin\which.cmd" />
+    <None Include="node_modules\.bin\which.ps1" />
+  </ItemGroup>
+
+</Project>

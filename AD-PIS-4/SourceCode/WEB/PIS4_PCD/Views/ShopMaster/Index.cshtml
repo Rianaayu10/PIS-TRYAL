@@ -1,0 +1,311 @@
+﻿@{
+    ViewData["Menu"] = "Security";
+    ViewData["Title"] = "Shop Master";
+}
+
+@section Styles {
+    <link href="~/lib/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link href="~/lib/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" />
+    <link href="~/css/addtionalcss/toastr.css" rel="stylesheet" />
+    <link href="~/css/addtionalcss/toastr.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <style type="text/css">
+        .theme-color {
+            background-color: var(--bs-app-theme);
+            color: var(--bs-app-theme-color);
+        }
+
+        .txtAlignCenter {
+            text-align: center;
+        }
+
+        .txtAlignLeft {
+            text-align: left;
+        }
+
+        .txtAlignRight {
+            text-align: right;
+        }
+    </style>
+}
+@section Scripts {
+    <script src="~/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="~/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/lib/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+    <script src="~/js/demo/table-manage-default.demo.js"></script>
+    <script src="~/lib/@@highlightjs/cdn-assets/highlight.min.js"></script>
+    <script src="~/js/demo/render.highlight.js"></script>
+    <script src="~/lib/parsleyjs/dist/parsley.min.js"></script>
+    <script src="~/js/additionaljs/toastr.js"></script>
+    <script src="~/js/additionaljs/toastr.min.js"></script>
+    <script src="~/lib/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        var userlogin = '@ViewBag.UserLogin'
+
+            $(document).ready(function () {
+                $("#tableID").dataTable({
+                    bDestroy: true,
+                    data: [],
+                    columns: [
+                        { "data": "TPCode", "autoWidth": true, className: "txtAlignLeft" },
+                        { "data": "Position", "autoWidth": true, className: "txtAlignLeft" },
+                        { "data": "In", "autoWidth": true, className: "txtAlignCenter" },
+                        { "data": "Out", "autoWidth": true, className: "txtAlignCenter" }
+                    ],
+                    columnDefs: [{
+                        'targets': [2],
+                        'searchable': false,
+                        'orderable': false,
+                        'className': 'dt-body-center',
+                        "mRender": function (data, type, full, meta) {
+                            console.log(data);
+                            return '<input id="In" type="checkbox" ' + (data == '1' ? ' checked' : '') + '/>';
+
+                        }
+                    },
+                    {
+                        'targets': [3],
+                        'searchable': false,
+                        'orderable': false,
+                        'className': 'dt-body-center',
+                        "mRender": function (data, type, full, meta) {
+                            return '<input id="Out" type="checkbox" ' + (data == '1' ? ' checked' : '') + '/>';
+
+                        }
+                    }],
+                    "autoFill": false,
+                    "bSearchable": false,
+                    "bSortable": false,
+                });
+            }
+
+             /*=========================================
+             Browse data
+             ==========================================*/
+             $("#browse").click(function () {
+                loaddata();
+             })
+
+             /*=========================================
+             Clear data
+             ==========================================*/
+             $("#clear").click(function () {
+                cleardata();
+             })
+
+            /*=========================================
+            Clear data
+            ==========================================*/
+            $("#savedata").click(function () {
+                var prm = [];
+                prm.length = 0
+
+                var prm = [];
+                prm.length = 0;
+
+                $.each($("#tableID tbody tr"), function () {
+                    var In
+                    if ($(this).find('input:eq(0):checked').is(":checked")) {
+                        In = "1";
+                    } else {
+                        In = "0";
+                    }
+
+                    var Out
+                    if ($(this).find('input:eq(1):checked').is(":checked")) {
+                        Out = "1";
+                    } else {
+                        Out = "0";
+                    }
+
+                    prm.push({
+                        TPCode: $(this).find('td:eq(0)').html(),
+                        In: In,
+                        Out: Out,
+                        RegisterUser: userlogin
+                    });
+                });
+
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    url: '/ShopMaster/Update/',
+                    data: JSON.stringify(prm),
+                    success: function (result) {
+                        /*=======Result OK========*/
+                        if (result.ID == "0") {
+                            toastr.success(result.Message, 'Message', { timeOut: 3000, "closeButton": true });
+                        }
+
+                        /*=======Result Token Expired OK========*/
+                        else if (result.ID == "400") {
+                            window.open("/UserLogin/UserLogin", "_self");
+                        }
+
+                        /*=======Result BadRequest========*/
+                        else {
+                            toastr.warning(result.Message, 'Warning', { timeOut: 3000, "closeButton": true });
+                        }
+                    },
+                    error: function (ex) {
+                        toastr.error('Failed to retrieve Update User Privilege' + ex, 'Warning', { timeOut: 3000, "closeButton": true });
+                    }
+                });
+            })
+
+            /*=========================================
+            Function for load data shop master
+            ==========================================*/
+            function loaddata() {
+                // Parameter
+                var formData = new FormData();
+                formData.append("ShopCode", $("#shoptype").val());
+
+                $.ajax({
+                    type: "Post",
+                    url: "/ShopMaster/GetList/",
+                    dataType: "json",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (result) {
+                        /*=======Result OK========*/
+                        if (result.ID == "0") {
+                            $("#tableID").DataTable().clear();
+                            $("#tableID").DataTable().rows.add(result.Contents).draw(false);
+                        }
+
+                        /*=======Result Token Expired OK========*/
+                        else if (result.ID == "400") {
+                            window.open("/UserLogin/UserLogin", "_self");
+                        }
+
+                        /*=======Result BadRequest========*/
+                        else {
+                            toastr.warning(result.Message, 'Warning', { timeOut: 3000, "closeButton": true });
+                        }
+                    },
+                    error: function (ex) {
+                        toastr.error('Failed to retrieve Get User Privilege' + ex, 'Warning', { timeOut: 3000, "closeButton": true });
+                    }
+                });
+            }
+
+            /*=========================================
+            Function for clear data
+            ==========================================*/
+            function cleardata() {
+                $("#tableID").DataTable().clear();
+                shopcode($("#shoptype").val());
+            }
+
+            /*=========================================
+            Function get shop code
+            ==========================================*/
+            function shopcode(prm) {
+                var formData = new FormData();
+                formData.append("ActionType", "5");
+
+                $.ajax({
+                    type: "Post",
+                    url: "/GlobalFilter/Filter/",
+                    dataType: "json",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (result) {
+                        /*=======Result OK========*/
+                        if (result.ID == "0") {
+                            $('#shopcode').empty();
+                            $("#shopcode").append('<option value="" disabled selected> Fill Shop Code </option>');
+                            $.each(result.Contents, function (i, bind) {
+                                if (bind.Code == prm) {
+                                    $("#shopcode").append('<option value="' + bind.Code + '" selected>' + bind.CodeDesc + '</option>');
+                                }
+                                else {
+                                    $("#shopcode").append('<option value="' + bind.Code + '">' + bind.CodeDesc + '</option>');
+                                }
+                            });
+                            $('#shopcode').focus();
+                        }
+
+                        /*=======Result Token Expired OK========*/
+                        else if (result.ID == "400") {
+                            window.open("/UserLogin/UserLogin", "_self");
+                        }
+
+                        /*=======Result BadRequest========*/
+                        else {
+                            toastr.warning(result.Message, 'Warning', { timeOut: 3000, "closeButton": true });
+                        }
+                    },
+                    error: function (ex) {
+                        toastr.error('Failed to retrieve Shop Code' + ex, 'Warning', { timeOut: 3000, "closeButton": true });
+                    }
+                });
+            }
+
+
+
+    </script>
+}
+
+@*<h1 class="page-header"> <i class="fa fa-key"></i> @ViewData["Menu"]</h1>*@
+<div class="row mb-3">
+    <div class="col-xl-8">
+        <div class="panel panel-inverse">
+            <div class="panel-heading" style="background-color: var(--bs-app-theme);color: var(--bs-app-theme-color);">
+                <h4 class="panel-title" style="font-size:medium"><i class="bi bi-person-fill"></i> @ViewData["Title"]</h4>
+                <div class="panel-heading-btn">
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div style="display:block; width:100%;">
+                    <div style="display:flex; margin-bottom:10px;">
+                        <div style="display:flex; width:50%">
+                            <div style="width:25%">
+                                <label class="form-label"> Shop Code </label>
+                            </div>
+                            <div style="width:70%">
+                                <select class="form-select" id="shopcode" name="Shop Code"></select>
+                            </div>
+                        </div>
+
+                        <div style="display:flex; width:50%">
+                            <div style="margin-left:20%">
+                                <button type="button" class="btn btn-theme w-100px me-5px" id="browse">Browse</button>
+                            </div>
+                            <div>&nbsp; &nbsp;</div>
+                            <div>
+                                <button type="button" class="btn btn-default w-100px" id="clear">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:20px">
+                    <button type="button" class="btn btn-theme w-100px me-5px" id="save">save</button>
+                </div>
+                <table id="tableID" class="table table-striped table-bordered" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th width="15%" style="text-align:center;">TP Code</th>
+                            <th style="text-align:center;">Position</th>
+                            <th width="10%" style="text-align:center;">In</th>
+                            <th width="10%" style="text-align:center;">Out</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

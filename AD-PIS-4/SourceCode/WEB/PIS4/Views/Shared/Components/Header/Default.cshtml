@@ -1,0 +1,15 @@
+﻿<!-- ======== Form Header ========= -->
+
+@{
+	ViewData["UserName"] = @ViewBag.UserName;
+}
+
+<a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
+	<div class="image image-icon bg-gray-800 text-gray-600">
+		<i class="fa fa-user"></i>
+	</div>
+	<span>
+		<span class="d-none d-md-inline">@ViewData["UserName"]</span>
+		<b class="caret"></b>
+	</span>
+</a>

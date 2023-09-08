@@ -1,0 +1,40 @@
+#Ignore thumbnails created by Windows
+Thumbs.db
+#Ignore files built by Visual Studio
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+.vs/
+bin/
+obj/
+node_modules/
+/AD-PIS-4/SourceCode/WEB/PIS4/wwwroot/css/
+/AD-PIS-4/SourceCode/WEB/PIS4/wwwroot/img/
+/AD-PIS-4/SourceCode/WEB/PIS4/wwwroot/js/
+/AD-PIS-4/SourceCode/WEB/PIS4/wwwroot/lib/
+/AD-PIS-4/SourceCode/WEB/PIS4/wwwroot/plugins/
+/AD-PIS-4/SourceCode/WEB/PIS4/wwwroot/webfonts/
+#Nuget packages folder
+packages/

@@ -1,0 +1,186 @@
+﻿@{
+    ViewData["Menu"] = "Security";
+    ViewData["Title"] = "User Group";
+}
+
+@section Styles {
+    <link href="~/lib/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link href="~/lib/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" />
+    <link href="~/css/addtionalcss/toastr.css" rel="stylesheet" />
+    <link href="~/css/addtionalcss/toastr.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <style type="text/css">
+        .theme-color {
+            background-color: var(--bs-app-theme);
+            color: var(--bs-app-theme-color);
+        }
+
+        .txtAlignCenter {
+            text-align: center;
+        }
+
+        .txtAlignLeft {
+            text-align: left;
+        }
+
+        .txtAlignRight {
+            text-align: right;
+        }
+    </style>
+}
+@section Scripts {
+    <script src="~/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="~/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/lib/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+    <script src="~/js/demo/table-manage-default.demo.js"></script>
+    <script src="~/lib/@@highlightjs/cdn-assets/highlight.min.js"></script>
+    <script src="~/js/demo/render.highlight.js"></script>
+    <script src="~/lib/parsleyjs/dist/parsley.min.js"></script>
+    <script src="~/js/additionaljs/toastr.js"></script>
+    <script src="~/js/additionaljs/toastr.min.js"></script>
+    <script src="~/lib/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        var userlogin = '@ViewBag.UserLogin'
+    </script>
+    <script src="~/js/additionaljs/controller/UserGroup.js?n=1"></script>
+    <script src="~/js/additionaljs/controller/UserPrivilege.js?n=1"></script>
+}
+
+@*<h1 class="page-header"> <i class="fa fa-key"></i> @ViewData["Menu"]</h1>*@
+<div class="panel panel-inverse">
+    <div class="panel-heading" style="background-color:var(--bs-app-theme); color:var(--bs-app-theme-color);">
+        <h4 class="panel-title" style="font-size:medium"><i class="bi bi-people-fill"></i> @ViewData["Title"]</h4>
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="mb-4">
+            <a href="#mymodal" class="btn btn-theme d-block w-100px h-35px" data-bs-toggle="modal" onclick="AddNewData()"><i class="bi bi-plus-circle-fill fs-14px"></i>&nbsp; New</a>
+        </div>
+        <table id="tableID" class="table table-striped table-bordered align-middle">
+            <thead>
+                <tr>
+                    <th width="1%">Action</th>
+                    <th width="7%" style="text-align:center;">Group ID</th>
+                    <th width="15%" style="text-align:center;">Group Name</th>
+                    <th width="10%" style="text-align:center;">Update User</th>
+                    <th width="8%" style="text-align:center;">Update Date</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <div class="modal fade" id="mymodal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalTitle"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel-body">
+                            <div class="row mb-10px">
+                                <label class="form-label col-form-label col-md-3">Group ID <small style="color:red">*</small></label>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" id="groupid" name="groupid" placeholder="Please fill Group ID" />
+                                        <div class="theme-color input-group-text"><i class="bi bi-people-fill fs-14px"></i></div>
+                                        <div class="invalid-tooltip">Please fill a Unique Group ID!</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-10px">
+                                <label class="form-label col-form-label col-md-3">Group Name <small style="color:red">*</small></label>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" id="groupname" name="groupname" placeholder="Please fill Group Name" />
+                                        <div class="theme-color input-group-text"><i class="bi bi-people-fill fs-14px"></i></div>
+                                        <div class="invalid-tooltip">Please fill a Group Name!</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-bs-dismiss="modal" onclick="ClearModal()">Close</button>
+                        <button type="button" class="btn btn-theme" id="InsertData">Save</button>
+                        <button type="button" class="btn btn-theme" id="UpdateData" style="display:none;">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal-alert">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete Data User Group</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-warning">
+                            <h5><i class="fa fa-info-circle"></i> Are You Sure? </h5>
+                            <p>You want to delete the data user group?</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-bs-dismiss="modal" onclick="ClearModal()">Close</button>
+                        <button type="button" class="btn btn-theme" id="DeletedData">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal-privilege">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width: 800px">
+                    <div class="modal-header">
+                        <h5 class="modal-title"> User Group Privilege  </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel-body">
+                            <input type="hidden" id="txtgroupid" />
+                            <table id="tablePrivilege" class="table table-striped table-bordered align-middle" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th width="7%" style="text-align:center;">Group</th>
+                                        <th width="7%" style="text-align:center;">Menu ID</th>
+                                        <th width="20%" style="text-align:center;">Description</th>
+                                        <th width="5%" style="text-align:center;">
+                                            <input type="checkbox" id="AllowAccess-All" />
+                                            Access
+                                        </th>
+                                        <th width="5%" style="text-align:center;">
+                                            <input type="checkbox" id="AllowUpdate-All" />
+                                            Update
+                                        </th>
+                                        <th width="5%" style="text-align:center;">
+                                            <input type="checkbox" id="AllowDelete-All" />
+                                            Delete
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-bs-dismiss="modal" onclick="ClearModalPrivilege()">Close</button>
+                        <button type="button" class="btn btn-theme" id="SavePrivilege">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
