@@ -36,5 +36,11 @@ node_modules/
 /AD-PIS-4/SourceCode/WEB/PIS4/wwwroot/lib/
 /AD-PIS-4/SourceCode/WEB/PIS4/wwwroot/plugins/
 /AD-PIS-4/SourceCode/WEB/PIS4/wwwroot/webfonts/
+/AD-PIS-4/SourceCode/WEB/PIS4_PCD/wwwroot/css/
+/AD-PIS-4/SourceCode/WEB/PIS4_PCD/wwwroot/img/
+/AD-PIS-4/SourceCode/WEB/PIS4_PCD/wwwroot/js/
+/AD-PIS-4/SourceCode/WEB/PIS4_PCD/wwwroot/lib/
+/AD-PIS-4/SourceCode/WEB/PIS4_PCD/wwwroot/plugins/
+/AD-PIS-4/SourceCode/WEB/PIS4_PCD/wwwroot/webfonts/
 #Nuget packages folder
 packages/
